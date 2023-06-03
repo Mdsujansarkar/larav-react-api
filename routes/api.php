@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::get('get/',function(){
+    return new Illuminate\Http\JsonResponse([
+        "data" => 'aaa'
+    ]);
+});
+Route::prefix('v1')->group(function(){
+    require __DIR__.'/api/v1/user.php';
+});
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
